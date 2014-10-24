@@ -7,6 +7,12 @@ from matplotlib import pyplot as plt
 img = cv2.imread('../Test_Images/Puzzle_Test1_Images/DSLR/High_Rez/1B.JPG') # bring in the raw image
 #img = cv2.imread('1B.JPG') # bring in the raw image
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) # convert it to greyscale
+
+
+# test one, using canny
+
+# optional, needs to be tested. it blurres the image, but doesn't lose line sharpness.
+# gray = cv2.bilateralFilter(gray, 11, 17, 17)
 edges = cv2.Canny(gray,50,50,apertureSize=3) # highlight all the edges. 
 # by using trial and error: 
 # second number is threshold for what is considered 
@@ -18,8 +24,45 @@ edges = cv2.Canny(gray,50,50,apertureSize=3) # highlight all the edges.
 # update: better understanding of what the numbers do (min and max threshold values)
 #vhttp://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_canny/py_canny.html
 
-print "hello"
+
 cv2.imwrite('canny_edge_detection_output.jpg', edges)
+
+
+ret,thresh = cv2.threshold(gray,135,255,cv2.THRESH_BINARY) # later on requires a greyscale image.
+cv2.imwrite('threshold_output.jpg', thresh)
+
+(cnts, _) = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) # function destroys original image, so copy is used.
+# we don't care about the other return. something like hierarchys?? don't know don't care.
+# third argument can be one of the following, and determines if every edge point is stored, or if
+# we approximate the edge with only valuable edge points.
+#CHAIN_APPROX_NONE
+#CHAIN_APPROX_SIMPLE
+# second argument is how the hierarcys are formed, and isn't too important?? if the hierarchy return isn't used.
+
+cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:2] # grab only the largest contours, sorted by size (area contained, not number of points)
+#print cnts
+
+cv2.drawContours(img,cnts,-1,(0,255,0),10) # only for visualization purposes. the mathematical list of points 
+# will be more useful for matching.
+# the last argument is the edge width. the first numerical argument is which contours to be drawn. make it -1 to draww all arguments.
+# can also plot just one contour by passing in only one contour instead of a list of contours.
+# first argument is which image to draw the contours on, second argument is the list of contours
+# fourth argument is probably intensity of the line drawn??
+
+cv2.imwrite('contours_output.jpg', img)
+
+
+
+
+"""
+# test two, using countours.
+ret,thresh = cv2.threshold(gray,127,255,0) # later on requires a greyscale image.
+contours,hierarchy = cv2.findContours(thresh, 1, 2)
+cnt = contours[0]
+perimeter = cv2.arcLength(cnt,True)
+
+cv2.imwrite('contours_output.jpg', perimeter)
+"""
 
 """
 lines=cv2.HoughLines(edges,1,np.pi/180,200)
