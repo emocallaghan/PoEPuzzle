@@ -39,7 +39,8 @@ cv2.imwrite('threshold_output.jpg', thresh)
 #CHAIN_APPROX_SIMPLE
 # second argument is how the hierarcys are formed, and isn't too important?? if the hierarchy return isn't used.
 
-cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[:2] # grab only the largest contours, sorted by size (area contained, not number of points)
+cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[1:5] # grab only the largest contours, sorted by size (area contained, not number of points)
+print(cnts.__len__())
 #print cnts
 
 cv2.drawContours(img,cnts,-1,(0,255,0),10) # only for visualization purposes. the mathematical list of points 
