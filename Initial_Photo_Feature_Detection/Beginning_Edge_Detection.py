@@ -2,10 +2,12 @@
 
 import cv2
 import numpy as np
+import csv
 from matplotlib import pyplot as plt
 
-img = cv2.imread('../Test_Images/Puzzle_Test1_Images/DSLR/High_Rez/swedenFinland.JPG') # bring in the raw image
+#img = cv2.imread('../Test_Images/Puzzle_Test1_Images/DSLR/High_Rez/swedenFinland.JPG') # bring in the raw image
 #img = cv2.imread('1B.JPG') # bring in the raw image
+img = cv2.imread('puzzle_flash.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) # convert it to greyscale
 
 
@@ -28,7 +30,7 @@ edges = cv2.Canny(gray,100,200,apertureSize=3) # highlight all the edges.
 cv2.imwrite('canny_edge_detection_output.jpg', edges)
 
 
-ret,thresh = cv2.threshold(gray,200,255,cv2.THRESH_BINARY) # later on requires a greyscale image.
+ret,thresh = cv2.threshold(gray,150,255,cv2.THRESH_BINARY) # later on requires a greyscale image.
 cv2.imwrite('threshold_output.jpg', thresh)
 
 (cnts, _) = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) # function destroys original image, so copy is used.
@@ -39,11 +41,11 @@ cv2.imwrite('threshold_output.jpg', thresh)
 #CHAIN_APPROX_SIMPLE
 # second argument is how the hierarcys are formed, and isn't too important?? if the hierarchy return isn't used.
 
-cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[1:5] # grab only the largest contours, sorted by size (area contained, not number of points)
+cnts = sorted(cnts, key = cv2.contourArea, reverse = True)[1:6] # grab only the largest contours, sorted by size (area contained, not number of points)
 print(cnts.__len__())
 #print cnts
 
-cv2.drawContours(img,cnts,-1,(0,255,0),10) # only for visualization purposes. the mathematical list of points 
+cv2.drawContours(img,cnts,-1,(0,255,0),4) # only for visualization purposes. the mathematical list of points 
 # will be more useful for matching.
 # the last argument is the edge width. the first numerical argument is which contours to be drawn. make it -1 to draww all arguments.
 # can also plot just one contour by passing in only one contour instead of a list of contours.
@@ -51,10 +53,18 @@ cv2.drawContours(img,cnts,-1,(0,255,0),10) # only for visualization purposes. th
 # fourth argument is probably intensity of the line drawn??
 
 cv2.imwrite('contours_output.jpg', img)
+size = cnts.__len__();
+puzdata = []
+for i in range(0, size):
+	puzdata.append(cnts[i].T)
 
-
-
-
+print(puzdata)
+with open('test.csv', 'wb') as fp:
+    a = csv.writer(fp, delimiter=',')
+    data = [['Me', 'You'],
+            ['293', '219'],
+            ['54', '13']]
+    a.writerows(cnts)
 
 """
 # test two, using countours.
