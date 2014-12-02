@@ -11,8 +11,8 @@ function [angle] = Solve_Squares(puzzlePieces)
     lineOne = [s1CornerOne(1), s1CornerOne(2); s1CornerTwo(1), s1CornerTwo(2)];
     lineTwo = [s2CornerOne(1), s2CornerOne(2); s2CornerTwo(1), s2CornerTwo(2)];
     hold on;
-%     plot([s1CornerOne(1),s1CornerTwo(1)],[s1CornerOne(2),s1CornerTwo(2)],'LineWidth',4);
-%     plot([s2CornerOne(1),s2CornerTwo(1)],[s2CornerOne(2),s2CornerTwo(2)],'LineWidth',4);
+    plot([s1CornerOne(1),s1CornerTwo(1)],[s1CornerOne(2),s1CornerTwo(2)],'LineWidth',4);
+    plot([s2CornerOne(1),s2CornerTwo(1)],[s2CornerOne(2),s2CornerTwo(2)],'LineWidth',4);
     plot(lineOne(:,1), lineOne(:,2), 'LineWidth', 4);
     plot(lineTwo(:,1), lineTwo(:,2), 'LineWidth', 4);
     
