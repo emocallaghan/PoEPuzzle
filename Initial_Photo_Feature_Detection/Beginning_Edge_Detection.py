@@ -7,7 +7,7 @@ from matplotlib import pyplot as plt
 
 #img = cv2.imread('../Test_Images/Puzzle_Test1_Images/DSLR/High_Rez/swedenFinland.JPG') # bring in the raw image
 #img = cv2.imread('1B.JPG') # bring in the raw image
-img = cv2.imread('puzzle_flash.jpg')
+img = cv2.imread('blurred.jpg')
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) # convert it to greyscale
 
 
