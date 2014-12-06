@@ -90,7 +90,19 @@ function [angle, pairIndices] = Solve_Squares(puzzlePieces)
     DirVector1=s1CornerOne-s1CornerTwo;
     DirVector2=s2CornerOne-s2CornerTwo;
 
-    angle=acos( dot(DirVector1,DirVector2)/( norm(DirVector1)*norm(DirVector2)) );
+    angleNoDir=acos( dot(DirVector1,DirVector2)/( norm(DirVector1)*norm(DirVector2)) );
+    
+    xdif = lineTwo(1,1)-lineOne(1,1);
+    ydif = lineTwo(1,2)-lineOne(1,2);
+    newTopx = lineOne(1,1)+xdif;
+    newTopy = lineOne(1,2)+ydif;
+    
+    dir = -1;
+    if(newTopy<lineTwo(1,2))
+        dir = 1;
+    end
+    
+    angle = dir*angleNoDir;
     [midOnex,midOney] = midpoint(lineOne);
     [midTwox, midTwoy] = midpoint(lineTwo);
     plot(midOnex, midOney, 'b+');

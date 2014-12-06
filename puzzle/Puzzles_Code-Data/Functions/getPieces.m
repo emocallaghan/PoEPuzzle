@@ -11,6 +11,6 @@ blackWhite = imfill(blackWhite, 'holes');
 h = ones(5,5)/25;
 filtered = imfilter(blackWhite, h, 'replicate');
 edgePhoto = edge(filtered,'Canny');
-C = corner(edgePhoto,8);
+
 puzzlePieces = extractEdges(edgePhoto);
 end

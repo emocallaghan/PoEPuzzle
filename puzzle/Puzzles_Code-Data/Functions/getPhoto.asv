@@ -6,10 +6,8 @@ function [ image ] = getPhoto( )
 % myCamera = DeviceManager.ConnectedDevices.Item(0);
 % myPhotoSession = PhotoSession(myCamera);
 % myCamera.CapturePhoto();
-%testing = imread('Computer/D3200/Removable storage/DCIM/100D3200/DSC_0012.JPG');
-%imshow(testing);
-%figure;
-fromCamera = imread('testPhotos/test_black_lines_1.jpg');
+imread('Computer/D3200/Removable storage/DCIM/1');
+fromCamera = imread('testPhotos/test_black_lines_4.jpg');
 xmin = 1708;
 ymin = 474;
 width = 3790;
