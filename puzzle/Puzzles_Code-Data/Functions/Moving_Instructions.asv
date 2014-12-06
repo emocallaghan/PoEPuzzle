@@ -8,13 +8,11 @@
 % fprintf(fileID,'%6.2f %12.8f\n',A);
 % fclose(fileID);
 function [movelist] = Moving_Instructions(piecelist,center2)
-formatSpec = '%6.2f , %6.2f , %6.2f ;\n';
-fileID = fopen('movelist.txt','w');
-    for i = 1:1:length(piecelist(:,1))
-        fprintf(fileID,formatSpec, center2(:,1), center2(:,2), 0000.00 );
-        fprintf(fileID,'Z;\n');
-        fprintf(fileID,formatSpec,piecelist(:,1),piecelist(:,2), piecelist(:,3));
-        fprintf(fileID,'Z;');
+formatSpec = '%5.2f, %5.2f, %5.2f';
+fileId = fopen('movelist.txt','w');
+    for i = 1:1:length(piecelist)
+        fprintf(fileID,formatSpec,piecelist(:,1),piecelist(:,2), Piecelist(:,3));
+
     end
 
 end

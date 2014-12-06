@@ -1,4 +1,4 @@
-function [ center1, center2, transConst] = centerToEdge(puzzlePieces, pairIndices)
+function [ center1, center2, transConst] = centerToEdge(puzzlePieces)
 %pulling list of four vertices for each puzzle piece.
 Piece1 = puzzlePieces{:,1};
 Piece2 = puzzlePieces{:,2};
@@ -38,6 +38,6 @@ end
     center1 = [centerx1,centery1];
     
     center2 = [centerx2, centery2];
-    transConst = sqrt(((pairIndices(1,1)-center1(1,1))^2)+(pairIndices(1,2)-center1(1,2))^2);
+    transConst = sqrt(((pairIndices(1,1)-center(1,1))^2)+(pairIndices(1,2)-center1(1,2))^2);
    
 end
