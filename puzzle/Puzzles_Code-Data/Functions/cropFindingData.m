@@ -9,21 +9,21 @@ width = 3790;
 height = 2776;
 rec = [xmin, ymin,width,height];
 
-test1 = imread('test_black_lines_1.jpg');
-test2 = imread('test_black_lines_2.jpg');
-test3 = imread('test_black_lines_3.jpg');
-test4 = imread('test_black_lines_4.jpg');
+test1 = imread('test_integration.jpg');
 
 % test1g = rgb2gray(test1);
 % test2g = rgb2gray(test2);
 % test3g = rgb2gray(test3);
 % test4g = rgb2gray(test4);
 
-%c1 = corner(test1g, 'QualityLevel', .01);
+c1 = corner(test1g, 'QualityLevel', .01);
 % c2 = corner(test2g, 'QualityLevel', .001);
 % c3 = corner(test3g, 'QualityLevel', .001);
 % c4 = corner(test4g, 'QualityLevel', .001);
 
+1588, 500
+5439, 538
+1619, 3333
 
 figure;
 imshow(test1);
@@ -68,15 +68,6 @@ plot([xmin, xmin+width, xmin+width, xmin, xmin],[ymin, ymin, ymin+height,ymin+he
 %1708, 3250
 
 testcrop1 = imcrop(test1, rec);
-testcrop2 = imcrop(test2, rec);
-testcrop3 = imcrop(test3, rec);
-testcrop4 = imcrop(test4, rec);
 
 figure;
 imshow(testcrop1);
-figure;
-imshow(testcrop2);
-figure;
-imshow(testcrop3);
-figure;
-imshow(testcrop4);

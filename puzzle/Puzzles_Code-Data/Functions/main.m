@@ -1,10 +1,11 @@
 image = getPhoto();
 imshow(image);
 puzzlePieces = getPieces(image);
-    %Solve_Puzzle(puzzlePieces,2,1);
+%     %Solve_Puzzle(puzzlePieces,2,1);
+puzzlePieces = extractEdgesCorners(image, C);
 [angle, pairIndices] = Solve_Squares(puzzlePieces);
 [ center1, center2, transConst] = centerToEdge(puzzlePieces,pairIndices);
 % pieceList = getPieceInformation();
 [piecelist] = getPieceSquares(center2,pairIndices,angle,transConst);
-% moveList = makeMoves(pieceList);
-% move(moveList);
+moveList = makeMoves(pieceList);
+move(moveList);

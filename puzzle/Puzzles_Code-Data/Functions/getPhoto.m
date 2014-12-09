@@ -9,12 +9,13 @@ function [ image ] = getPhoto( )
 %testing = imread('Computer/D3200/Removable storage/DCIM/100D3200/DSC_0012.JPG');
 %imshow(testing);
 %figure;
-fromCamera = imread('testPhotos/test_black_lines_1.jpg');
-xmin = 1708;
-ymin = 474;
-width = 3790;
-height = 2776;
+fromCamera = imread('testPhotos/test_integration.jpg');
+xmin = 1619;
+ymin = 538;
+width = 5439-xmin;
+height = 3333-ymin;
 rec = [xmin, ymin,width,height];
 cropped = imcrop(fromCamera, rec);
 image = cropped;
+imshow(image);
 end
