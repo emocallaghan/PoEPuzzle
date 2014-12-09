@@ -1,0 +1,20 @@
+%this is the main code to run. Starts by using getPhoto() to either pull an
+%image from the camera or get a photo from the filepath. Puzzle Pieces then
+%
+% image = getPhoto();
+% imshow(image);
+% puzzlePieces = getPieces(image);
+%     %Solve_Puzzle(puzzlePieces,2,1);
+puzzlePieces = extractEdgesCorners(image, C);
+sizephoto = size(image);
+width = sizephoto(1);
+[angle, pairIndices] = Solve_Squares(puzzlePieces);
+[ center1, center2, transConst] = centerToEdge(puzzlePieces,pairIndices);
+%pieceList = getPieceInformation();
+[piecelist] = getPieceSquares(center2,pairIndices,angle,transConst, width);
+Moving_Instructions(piecelist,center2, width);
+
+
+
+% moveList = makeMoves(pieceList);
+% move(moveList);

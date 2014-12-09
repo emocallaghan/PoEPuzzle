@@ -6,35 +6,40 @@ function [ PuzzlePieces ] = extractEdges( edgePhoto )
 
 Labeled = bwlabel(edgePhoto, 8);
 
+%plots different labels
+% imshow(edgePhoto);
+% figure
+% imshow(edgePhoto);
+% hold on;
+% sizeL = size(Labeled);
+% for i = 1:sizeL(1)
+%     for j = 1:sizeL(2)
+%         if (Labeled(i,j)>0)
+%             plot(j,i,'g+');
+%         end
+%         if (Labeled(i,j)==2)
+%             plot(j,i,'b+');
+%         end
+%     end
+% 
+% end
 
-imshow(edgePhoto);
-figure
-imshow(edgePhoto);
-hold on;
-sizeL = size(Labeled);
-for i = 1:sizeL(1)
-    for j = 1:sizeL(2)
-        if (Labeled(i,j)>0)
-            plot(j,i,'g+');
-        end
-        if (Labeled(i,j)==2)
-            plot(j,i,'b+');
-        end
-    end
-
-end
-
+%determines how many unique labels there are.
 labels = [];
 for i = 1:sizeL(1)
     for j = 1:sizeL(2)
         currentLabel = Labeled(i,j);
         newLab = true;
         sizeLabels = size(labels);
+        %determines if there are any other labels. If not and the current
+        %label isn't zero simply adds to new labels.
         if(sizeLabels(2)==0)
             if(currentLabel==0)
                 newLab = false;
             end
         else
+            %if the currentLabel is zero or if it is already accounted for
+            %don't add it.
             for lab = 1:sizeLabels(2)
                 if(currentLabel==0 || currentLabel == labels(lab))
                     newLab = false;
@@ -47,12 +52,16 @@ for i = 1:sizeL(1)
     end
 end
 
+%creates the same size in pieces as there are different labels. So each
+%unique label corresponds to one index of pieces
 pieces = {};
 sizeLabels = size(labels)
 for i=1:sizeLabels(2)
     piece = [];
     pieces{i} = piece;
 end
+
+%adds the x,y for any label to the pieces cell array indexed at that label
 
 for i = 1:sizeL(1)
     for j = 1:sizeL(2)

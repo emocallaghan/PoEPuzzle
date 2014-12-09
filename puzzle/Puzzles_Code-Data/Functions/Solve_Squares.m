@@ -1,4 +1,4 @@
-function [angle, pairIndices] = Solve_Squares(puzzlePieces)
+function [angle, pairIndices, sideLength] = Solve_Squares(puzzlePieces)
 %solves to put two squares together
 
     SquareOne = puzzlePieces{1};
@@ -102,11 +102,14 @@ function [angle, pairIndices] = Solve_Squares(puzzlePieces)
         dir = 1;
     end
     
-    angle = dir*angleNoDir;
+    angleRad = dir*angleNoDir;
+    angle = angleRad*180/pi;
     [midOnex,midOney] = midpoint(lineOne);
     [midTwox, midTwoy] = midpoint(lineTwo);
     plot(midOnex, midOney, 'b+');
     plot(midTwox, midTwoy, 'r+');
     pairIndices = [midOnex, midOney; midTwox, midTwoy];
+    
+    sideLength = distance([lineOne(1,1),lineOne(1,2)], [lineOne(2,1),lineOne(2,2)] );
 end
 

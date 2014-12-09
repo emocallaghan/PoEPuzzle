@@ -1,11 +1,17 @@
-image = getPhoto();
-imshow(image);
-puzzlePieces = getPieces(image);
+%this is the main code to run. Starts by using getPhoto() to either pull an
+%image from the camera or get a photo from the filepath. getPieces returns
+%a cell array the contents of each cell is a 2 by x matrix where x is the
+%number of points on the closed curve.
+
+% image = getPhoto();
+% imshow(image);
+% puzzlePieces = getPieces(image);
 %     %Solve_Puzzle(puzzlePieces,2,1);
+load('integrationTestOne.mat');
 puzzlePieces = extractEdgesCorners(image, C);
-[angle, pairIndices] = Solve_Squares(puzzlePieces);
+sizephoto = size(image);
+width = sizephoto(1);
+[angle, pairIndices, sideLength] = Solve_Squares(puzzlePieces);
 [ center1, center2, transConst] = centerToEdge(puzzlePieces,pairIndices);
-% pieceList = getPieceInformation();
 [piecelist] = getPieceSquares(center2,pairIndices,angle,transConst);
-moveList = makeMoves(pieceList);
-move(moveList);
+Moving_Instructions(piecelist,center2, width, sideLength);
