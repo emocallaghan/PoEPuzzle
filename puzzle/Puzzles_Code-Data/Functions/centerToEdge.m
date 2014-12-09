@@ -24,7 +24,7 @@ end
 
 %Use midpoint theorem to find center of square
 %begin for piece 1
-for callCorner = 1:1:4 
+for callCorner = 1:1:size(corner1(1,:))
     x1posTot = x1posTot + corner1(callCorner,1);
     y1posTot = y1posTot + corner1(callCorner,2);
     x2posTot = x2posTot + corner2(callCorner,1);

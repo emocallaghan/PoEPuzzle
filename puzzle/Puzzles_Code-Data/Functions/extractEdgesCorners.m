@@ -1,18 +1,18 @@
 function [ PuzzlePieces ] = extractEdgesCorners(edgePhoto, C)
 %EXTRACTEDGES Summary of this function goes here
-%   Detailed explanation goes here
+  Detailed explanation goes here
 
-% h = fspecial('gaussian', size(edgePhoto), 1.0);
-% g = imfilter(edgePhoto, h);
-% C = corner(g,15);
+h = fspecial('gaussian', size(edgePhoto), 1.0);
+g = imfilter(edgePhoto, h);
+C = corner(g,15);
 % 
  imshow(edgePhoto);
  hold on;
  plot(C(:,1),C(:,2), 'go');
-% figure;
-%  imshow(g);
-%  hold on;
-%  plot(C(:,1),C(:,2), 'go');
+figure;
+ imshow(g);
+ hold on;
+ plot(C(:,1),C(:,2), 'go');
 
 sizeC = size(C);
 correctCorners = [];

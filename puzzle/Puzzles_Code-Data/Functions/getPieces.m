@@ -12,5 +12,5 @@ h = ones(5,5)/25;
 filtered = imfilter(blackWhite, h, 'replicate');
 edgePhoto = edge(filtered,'Canny');
 
-puzzlePieces = extractEdges(edgePhoto);
+puzzlePieces = extractEdgesCorners(edgePhoto);
 end
