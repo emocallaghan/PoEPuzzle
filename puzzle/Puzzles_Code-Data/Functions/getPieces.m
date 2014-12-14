@@ -1,4 +1,4 @@
-function [ puzzlePieces ] = getPieces( image )
+function [ puzzlePieces, edgePhoto ] = getPieces( image )
 
 %Turns the image into a binary image and fills in the holes
 imageGray = rgb2gray(image);
@@ -17,5 +17,5 @@ filtered = imfilter(blackWhite, h, 'replicate');
 edgePhoto = edge(filtered,'Canny');
 
 %extractEdges returns the cell array with the pieces.
-puzzlePieces = extractEdgesCorners(edgePhoto);
+puzzlePieces = extractEdges(edgePhoto);
 end

@@ -14,13 +14,14 @@ function [ image ] = getPhoto( )
 %figure;
 
 %Crop and return photo
-fromCamera = imread('testPhotos/DSC_0206.jpg');
-xmin = 1619;
-ymin = 538;
-width = 5439-xmin;
-height = 3333-ymin;
+fromCamera = imread('testPhotos/DSC_0214.JPG');
+xmin = 1500;
+ymin = 450;
+width = 5300-xmin;
+height = 3300-ymin;
 rec = [xmin, ymin,width,height];
 cropped = imcrop(fromCamera, rec);
 image = cropped;
 imshow(image);
+
 end

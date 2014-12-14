@@ -2,27 +2,23 @@ function [ PuzzlePieces ] = extractEdges( edgePhoto )
 %EXTRACTEDGES Summary of this function goes here
 %   Detailed explanation goes here
 
-
+imshow(edgePhoto);
+hold on;
 
 Labeled = bwlabel(edgePhoto, 8);
 
-%plots different labels
-% imshow(edgePhoto);
-% figure
-% imshow(edgePhoto);
-% hold on;
-% sizeL = size(Labeled);
-% for i = 1:sizeL(1)
-%     for j = 1:sizeL(2)
-%         if (Labeled(i,j)>0)
-%             plot(j,i,'g+');
-%         end
-%         if (Labeled(i,j)==2)
-%             plot(j,i,'b+');
-%         end
-%     end
-% 
-% end
+sizeL = size(Labeled);
+for i = 1:sizeL(1)
+    for j = 1:sizeL(2)
+        if (Labeled(i,j)>0)
+            plot(j,i,'g+');
+        end
+        if (Labeled(i,j)==2)
+            plot(j,i,'b+');
+        end
+    end
+
+end
 
 %determines how many unique labels there are.
 labels = [];
@@ -69,7 +65,7 @@ for i = 1:sizeL(1)
         if(currentLabel>0)
             piece = pieces{currentLabel};
             piece(end+1,1) = j;
-            piece(end,2) = i;
+            piece(end,2) = -i;
             pieces{currentLabel} = piece;
         end
     end
