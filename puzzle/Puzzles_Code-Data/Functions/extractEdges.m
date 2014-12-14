@@ -11,10 +11,10 @@ sizeL = size(Labeled);
 for i = 1:sizeL(1)
     for j = 1:sizeL(2)
         if (Labeled(i,j)>0)
-            plot(j,i,'g+');
+            plot(j,i,'g');
         end
         if (Labeled(i,j)==2)
-            plot(j,i,'b+');
+            plot(j,i,'b');
         end
     end
 
@@ -70,6 +70,12 @@ for i = 1:sizeL(1)
         end
     end
 end
+
+for i=1:sizeLabels(2)
+    sorted = distanceSort(pieces{i});
+    pieces{i} = sorted;
+end
+
 PuzzlePieces = pieces;
 
 end

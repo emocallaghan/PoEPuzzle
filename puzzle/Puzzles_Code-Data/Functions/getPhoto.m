@@ -14,7 +14,7 @@ function [ image ] = getPhoto( )
 %figure;
 
 %Crop and return photo
-fromCamera = imread('testPhotos/DSC_0214.JPG');
+fromCamera = imread('testPhotos/DSC_0216.JPG');
 xmin = 1500;
 ymin = 450;
 width = 5300-xmin;
@@ -22,6 +22,9 @@ height = 3300-ymin;
 rec = [xmin, ymin,width,height];
 cropped = imcrop(fromCamera, rec);
 image = cropped;
+
+%image = imread('testPhotos/All_Separate.JPG');
+
 imshow(image);
 
 end
