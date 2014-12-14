@@ -3,12 +3,11 @@
 %a cell array the contents of each cell is a 2 by x matrix where x is the
 %number of points on the closed curve.
 
-% image = getPhoto();
-% imshow(image);
-% puzzlePieces = getPieces(image);
-%     %Solve_Puzzle(puzzlePieces,2,1);
-load('integrationTestOne.mat');
-puzzlePieces = extractEdgesCorners(image, C);
+image = getPhoto();
+puzzlePieces = getPieces(image);
+Solve_Puzzle(puzzlePieces,2,1);
+%load('integrationTestOne.mat');
+%puzzlePieces = extractEdgesCorners(image, C);
 sizephoto = size(image);
 width = sizephoto(1);
 [angle, pairIndices, sideLength] = Solve_Squares(puzzlePieces);
