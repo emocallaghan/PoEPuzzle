@@ -22,6 +22,7 @@ for i=1:sizeP(1)-2
         end
     end
 
-    sortedPieces = pieces;
+    
 end
-
+sortedPieces = pieces;
+end

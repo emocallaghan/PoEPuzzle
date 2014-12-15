@@ -14,7 +14,7 @@ function [ image ] = getPhoto( )
 %figure;
 
 %Crop and return photo
-fromCamera = imread('testPhotos/DSC_0216.JPG');
+fromCamera = imread('testPhotos/squaresMaddy.JPG');
 xmin = 1500;
 ymin = 450;
 width = 5300-xmin;
