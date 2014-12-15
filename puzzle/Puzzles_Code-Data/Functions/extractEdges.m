@@ -76,7 +76,14 @@ for i=1:sizeLabels(2)
     pieces{i} = sorted;
 end
 
-PuzzlePieces = pieces;
+bezPieces = {};
+for i=1:sizeLabels(2)
+    piece = pieces{i};
+    bezPiece = bezier_(piece);
+    bezPieces{i} = bezPiece;
+end
+
+PuzzlePieces = bezPieces;
 
 end
 

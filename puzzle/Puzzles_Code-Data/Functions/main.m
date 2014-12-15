@@ -5,7 +5,7 @@
 
 image = getPhoto();
 [puzzlePieces, edgePhoto] = getPieces(image);
-%[pieces, placements, tracker] = Solve_Puzzle(puzzlePieces,2,1);
+[pieces, placements, tracker] = Solve_Puzzle(puzzlePieces,2,1);
 %load('integrationTestOne.mat');
 %puzzlePieces = extractEdgesCorners(image, C);
 % sizephoto = size(image);
