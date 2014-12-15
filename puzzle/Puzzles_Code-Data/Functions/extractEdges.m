@@ -65,7 +65,7 @@ for i = 1:sizeL(1)
         if(currentLabel>0)
             piece = pieces{currentLabel};
             piece(end+1,1) = j;
-            piece(end,2) = -i;
+            piece(end,2) = i;
             pieces{currentLabel} = piece;
         end
     end
